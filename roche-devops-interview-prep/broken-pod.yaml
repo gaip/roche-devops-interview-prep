@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: roche-dev-broken-pod
+  namespace: roche-dev
+spec:
+  containers:
+    - name: nginx
+      image: nginx:unprivileged
+      ports:
+        - containerPort: 80
