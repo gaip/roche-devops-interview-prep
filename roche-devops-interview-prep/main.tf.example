@@ -1,0 +1,16 @@
+terraform {
+  required_providers {
+    kubernetes = {
+      source  = "hashicorp/kubernetes"
+      version = ">= 2.0.0"
+    }
+  }
+  
+  backend "s3" {
+    bucket         = "roche-terraform-state-prod"
+    key            = "live/prod/terraform.tfstate"
+    region         = "eu-central-1"
+    dynamodb_table = "terraform-state-lock"
+    encrypt        = true
+  }
+}
